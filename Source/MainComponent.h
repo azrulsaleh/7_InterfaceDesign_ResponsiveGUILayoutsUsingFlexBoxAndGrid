@@ -27,9 +27,34 @@ public:
     void resized() override;
 
 private:
-    //==============================================================================
-    // Your private member variables go here...
+    struct RightSidePanel : public Component
+    {
+        RightSidePanel (Colour);
+        void paint (Graphics&) override;
+        void resized() override;
+        Colour backgroundColour;
+        OwnedArray<TextButton>buttons;
+    };
+    RightSidePanel rightPanel;
+    
+    struct LeftSidePanel : public Component
+    {
+        LeftSidePanel (Colour);
+        void paint(Graphics&) override;
+        void resized() override;
+        Colour backgroundColour;
+        OwnedArray<Slider>knobs;
+    };
+    LeftSidePanel leftPanel;
 
+    struct MainPanel : public Component
+    {
+        MainPanel();
+        void paint (Graphics&) override;
+        void resized() override;
+        OwnedArray<Slider>sliders;
+    };
+    MainPanel mainPanel;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };

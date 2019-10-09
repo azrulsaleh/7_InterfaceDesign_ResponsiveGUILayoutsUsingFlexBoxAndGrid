@@ -29,7 +29,11 @@ public:
 private:
     struct RightSidePanel : public Component
     {
-        RightSidePanel (Colour);
+        #if JUCE_PROJUCER_LIVE_BUILD
+            RightSidePanel ();
+        #else
+            RightSidePanel (Colour);
+        #endif
         void paint (Graphics&) override;
         void resized() override;
         Colour backgroundColour;
@@ -39,7 +43,11 @@ private:
     
     struct LeftSidePanel : public Component
     {
-        LeftSidePanel (Colour);
+        #if JUCE_PROJUCER_LIVE_BUILD
+            LeftSidePanel ();
+        #else
+            LeftSidePanel (Colour);
+        #endif
         void paint(Graphics&) override;
         void resized() override;
         Colour backgroundColour;
